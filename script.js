@@ -9,7 +9,7 @@ const inventory = {
 };
 
 // ページ読み込み時に在庫状況を更新
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     updateStockDisplay();
     initializeEventListeners();
 });
@@ -19,12 +19,12 @@ function updateStockDisplay() {
     const products = ['アカシア蜂蜜', '百花蜜', 'ギフトセット'];
     const stockIds = ['stock-acacia', 'stock-wildflower', 'stock-gift'];
     const buttonIds = ['btn-acacia', 'btn-wildflower', 'btn-gift'];
-    
+
     products.forEach((product, index) => {
         const stockElement = document.getElementById(stockIds[index]);
         const buttonElement = document.getElementById(buttonIds[index]);
         const stock = inventory[product];
-        
+
         if (stock > 0) {
             stockElement.textContent = `在庫あり（${stock}個）`;
             stockElement.className = 'stock-status';
@@ -46,7 +46,7 @@ function addToCart(name, price) {
         alert('申し訳ございません。この商品は在庫切れです。');
         return;
     }
-    
+
     const existingItem = cart.find(item => item.name === name);
     if (existingItem) {
         if (existingItem.quantity >= inventory[name]) {
@@ -57,7 +57,7 @@ function addToCart(name, price) {
     } else {
         cart.push({ name, price, quantity: 1 });
     }
-    
+
     updateCartDisplay();
     showAddToCartAnimation(event.target);
 }
@@ -67,7 +67,7 @@ function updateCartDisplay() {
     const cartCount = document.getElementById('cart-count');
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCount.textContent = totalItems;
-    
+
     if (totalItems > 0) {
         cartCount.style.display = 'flex';
     } else {
@@ -79,10 +79,10 @@ function updateCartDisplay() {
 function showAddToCartAnimation(button) {
     const originalText = button.textContent;
     const originalBackground = button.style.background;
-    
+
     button.style.background = '#4CAF50';
     button.textContent = '追加しました！';
-    
+
     setTimeout(() => {
         button.style.background = originalBackground;
         button.textContent = originalText;
@@ -94,7 +94,7 @@ function openOrderForm() {
     const modal = document.getElementById('order-modal');
     const orderItems = document.getElementById('order-items');
     const orderTotal = document.getElementById('order-total');
-    
+
     if (cart.length === 0) {
         orderItems.innerHTML = '<p class="empty-cart">商品が選択されていません</p>';
         orderTotal.textContent = '合計：¥0';
@@ -108,18 +108,18 @@ function openOrderForm() {
                 <div>¥${(item.price * item.quantity).toLocaleString()}</div>
             </div>
         `).join('');
-        
+
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         const shipping = total >= 5000 ? 0 : 600;
         const finalTotal = total + shipping;
-        
+
         orderTotal.innerHTML = `
             小計：¥${total.toLocaleString()}<br>
             送料：¥${shipping.toLocaleString()}<br>
             <strong>合計：¥${finalTotal.toLocaleString()}</strong>
         `;
     }
-    
+
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
@@ -138,29 +138,29 @@ function initializeEventListeners() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start' 
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
     });
-    
+
     // モーダルの外側クリックで閉じる
-    document.getElementById('order-modal').addEventListener('click', function(e) {
+    document.getElementById('order-modal').addEventListener('click', function (e) {
         if (e.target === this) {
             closeOrderForm();
         }
     });
-    
+
     // セクションにホバーエフェクトを追加
     const sections = document.querySelectorAll('.product-card, .contact-card');
     sections.forEach(section => {
-        section.addEventListener('mouseenter', function() {
+        section.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-5px)';
         });
-        
-        section.addEventListener('mouseleave', function() {
+
+        section.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0)';
         });
     });
@@ -173,18 +173,18 @@ async function fetchInventoryFromGoogleSheets() {
     try {
         // const response = await fetch('YOUR_GOOGLE_SHEETS_API_URL');
         // const data = await response.json();
-        
+
         // サンプルデータ
         const sampleData = {
             'アカシア蜂蜜': Math.floor(Math.random() * 10),
             '百花蜜': Math.floor(Math.random() * 10),
             'ギフトセット': Math.floor(Math.random() * 5)
         };
-        
+
         // 在庫データを更新
         Object.assign(inventory, sampleData);
         updateStockDisplay();
-        
+
     } catch (error) {
         console.error('在庫情報の取得に失敗しました:', error);
     }
@@ -199,35 +199,35 @@ function prepareOrderForGoogleForm() {
         alert('商品を選択してください。');
         return;
     }
-    
+
     // 注文内容をローカルストレージに保存（Googleフォームで参照）
     const orderData = {
         items: cart,
         total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
         timestamp: new Date().toISOString()
     };
-    
+
     localStorage.setItem('pendingOrder', JSON.stringify(orderData));
-    
+
     // Googleフォームのプリフィル用URLを生成
     const formUrl = 'https://forms.google.com/[あなたのフォームID]';
-    const orderSummary = cart.map(item => 
+    const orderSummary = cart.map(item =>
         `${item.name} × ${item.quantity} = ¥${(item.price * item.quantity).toLocaleString()}`
     ).join('\n');
-    
+
     // プリフィル用のパラメータを追加（実際のフォームフィールドIDに合わせて調整）
     const prefilledUrl = `${formUrl}?usp=pp_url&entry.123456=${encodeURIComponent(orderSummary)}`;
-    
+
     return prefilledUrl;
 }
 
 // エラーハンドリング
-window.addEventListener('error', function(e) {
+window.addEventListener('error', function (e) {
     console.error('エラーが発生しました:', e.error);
 });
 
 // パフォーマンス最適化：画像の遅延読み込み
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-        
+
         document.querySelectorAll('img[data-src]').forEach(img => {
             imageObserver.observe(img);
         });
@@ -258,7 +258,7 @@ function trackEvent(action, category, label) {
 
 // 商品追加時のトラッキング
 const originalAddToCart = addToCart;
-addToCart = function(name, price) {
+addToCart = function (name, price) {
     trackEvent('add_to_cart', 'ecommerce', name);
     return originalAddToCart.call(this, name, price);
 };

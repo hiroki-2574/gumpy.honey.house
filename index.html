@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ガンピー養蜂 - 山梨県笛吹市の純粋蜂蜜</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- ヘッダー -->
     <header class="header">
@@ -25,16 +27,16 @@
             </div>
         </div>
     </header>
-    
+
     <!-- ヒーローセクション -->
     <section class="hero">
         <div class="hero-content">
             <h1>桃の里から、愛をお届け</h1>
-            <p>山梨県笛吹市の豊かな自然の中で、丁寧に育てた純粋な蜂蜜。<br>アカシアや百花蜜、果樹園の花々から採れた特別な味をお楽しみください。</p>
+            <p>富士山の麓山梨県で育てたミツバチから採れるはちみつです。<br>山梨の豊かな自然の中で咲く花々を味わってください。</p>
             <a href="#products" class="cta-button">商品を見る</a>
         </div>
     </section>
-    
+
     <!-- 商品セクション -->
     <section class="products-section" id="products">
         <div class="container">
@@ -54,7 +56,7 @@
                     </ul>
                     <button class="add-to-cart" onclick="addToCart('アカシア蜂蜜', 1800)" id="btn-acacia">カートに追加</button>
                 </div>
-                
+
                 <div class="product-card">
                     <div class="product-icon">🌼</div>
                     <h3 class="product-name">百花蜜</h3>
@@ -69,7 +71,7 @@
                     </ul>
                     <button class="add-to-cart" onclick="addToCart('百花蜜', 1600)" id="btn-wildflower">カートに追加</button>
                 </div>
-                
+
                 <div class="product-card">
                     <div class="product-icon">🎁</div>
                     <h3 class="product-name">ギフトセット</h3>
@@ -85,7 +87,7 @@
                     <button class="add-to-cart" onclick="addToCart('ギフトセット', 3500)" id="btn-gift">カートに追加</button>
                 </div>
             </div>
-            
+
             <div class="inventory-info">
                 <h3>📊 在庫状況はリアルタイム更新</h3>
                 <p>Googleスプレッドシートと連携して最新の在庫情報をお届けします</p>
@@ -93,7 +95,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- 注文方法セクション -->
     <section class="order-section" id="order-info">
         <div class="container">
@@ -120,7 +122,7 @@
                     <p>入金確認後、2-3営業日でお届けします</p>
                 </div>
             </div>
-            
+
             <div class="bank-info">
                 <h4>🏦 お振込み先銀行口座</h4>
                 <div class="bank-details">
@@ -138,7 +140,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- ストーリーセクション -->
     <section class="story-section" id="story">
         <div class="container">
@@ -156,7 +158,26 @@
             </div>
         </div>
     </section>
-    
+
+    <!-- ストーリーセクション -->
+    <section class="story-section" id="story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>🍯Pure Honey🍯</h2>
+                    <p>Bee Nice</p>
+                    <p>Bee Cool</p>
+                    <p>Bee Positive</p>
+                    <p>Bee Happy</p>
+                    <p>Bee You</p>
+                </div>
+                <div class="story-image">
+                    🏔️🐝
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 注文フォームモーダル -->
     <div class="order-modal" id="order-modal">
         <div class="order-content">
@@ -171,7 +192,7 @@
                 </div>
                 <div class="order-total" id="order-total">合計：¥0</div>
             </div>
-            
+
             <div class="order-instructions">
                 <h4>📋 注文手順</h4>
                 <ol>
@@ -181,7 +202,7 @@
                     <li>入金確認後、発送いたします</li>
                 </ol>
             </div>
-            
+
             <div class="google-form-container">
                 <a href="https://forms.google.com/[あなたのフォームID]" target="_blank" class="form-button">
                     📝 Googleフォームで注文する
@@ -191,7 +212,7 @@
                     ご注文内容をメモしてからフォームにお進みください
                 </p>
             </div>
-            
+
             <div class="privacy-notice">
                 <h4>🔒 個人情報の取り扱いについて</h4>
                 <p>
@@ -201,29 +222,29 @@
             </div>
         </div>
     </div>
-    
+
     <!-- お問い合わせセクション -->
     <section class="contact-section" id="contact-section">
         <div class="container">
             <h2 class="section-title">📞 お問い合わせ・サポート</h2>
-            
+
             <div class="contact-grid">
                 <div class="contact-card">
                     <div class="contact-icon">📧</div>
                     <h4>メールでのお問い合わせ</h4>
                     <p>商品やご注文に関するご質問など</p>
-                    <p class="contact-info">info@gunpee-honey.jp</p>
+                    <p class="contact-info">gumpy.honey.house@gmail.com</p>
                     <p class="contact-detail">返信：24時間以内（土日祝除く）</p>
                 </div>
-                
+
                 <div class="contact-card">
                     <div class="contact-icon">📱</div>
                     <h4>お電話でのお問い合わせ</h4>
                     <p>お急ぎの場合や直接ご相談したい場合</p>
-                    <p class="contact-info">090-XXXX-XXXX</p>
+                    <p class="contact-info">090-3406-8470</p>
                     <p class="contact-detail">受付時間：9:00-18:00（土日祝除く）</p>
                 </div>
-                
+
                 <div class="contact-card">
                     <div class="contact-icon">🏠</div>
                     <h4>所在地</h4>
@@ -234,7 +255,7 @@
                     </p>
                 </div>
             </div>
-            
+
             <div class="faq-section">
                 <h4>💡 よくあるご質問</h4>
                 <div class="faq-grid">
@@ -258,12 +279,12 @@
             </div>
         </div>
     </section>
-    
+
     <!-- プライバシーポリシーセクション -->
     <section class="privacy-section">
         <div class="container">
             <h2 class="privacy-title">🔒 プライバシーポリシー</h2>
-            
+
             <div class="privacy-content">
                 <div class="privacy-item">
                     <h4>個人情報の収集・利用について</h4>
@@ -274,7 +295,7 @@
                         <li>商品に関する重要なご連絡</li>
                     </ul>
                 </div>
-                
+
                 <div class="privacy-item">
                     <h4>個人情報の保護・削除について</h4>
                     <p>
@@ -282,7 +303,7 @@
                         <strong>商品到着確認後、速やかに削除</strong>させていただきます。
                     </p>
                 </div>
-                
+
                 <div class="privacy-item">
                     <h4>第三者への開示について</h4>
                     <p>
@@ -290,7 +311,7 @@
                         ただし、配送業者への配送に必要な情報（お名前・ご住所）の提供は除きます。
                     </p>
                 </div>
-                
+
                 <div class="privacy-guarantee">
                     <p>
                         ✅ 個人情報は発送目的以外には使用いたしません<br>
@@ -298,7 +319,7 @@
                         ✅ 第三者への情報提供は一切行いません
                     </p>
                 </div>
-                
+
                 <p class="privacy-update">
                     最終更新日：2024年8月31日<br>
                     ガンピー養蜂　代表
@@ -306,7 +327,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- フッター -->
     <footer class="footer" id="contact">
         <div class="footer-content">
@@ -318,8 +339,8 @@
                 </div>
                 <div class="footer-section">
                     <h4>📞 お問い合わせ</h4>
-                    <p>メール：info@gunpee-honey.jp</p>
-                    <p>電話：090-XXXX-XXXX</p>
+                    <p>メール：gumpy.honey.house@gmail.com</p>
+                    <p>電話：090-3406-8470</p>
                     <p>営業時間：9:00-18:00（土日祝除く）</p>
                 </div>
                 <div class="footer-section">
@@ -329,20 +350,21 @@
                     <p>送料：600円（5,000円以上無料）</p>
                 </div>
             </div>
-            
+
             <div class="footer-links">
                 <a href="#order-info">ご注文方法</a>
                 <a href="#contact-section">お問い合わせ</a>
                 <a href="mailto:info@gunpee-honey.jp">メール</a>
             </div>
-            
+
             <p class="footer-copyright">
                 © 2024 ガンピー養蜂 All rights reserved.<br>
                 個人情報は商品到着確認後、適切に削除いたします。
             </p>
         </div>
     </footer>
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>
